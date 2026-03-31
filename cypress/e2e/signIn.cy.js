@@ -2,12 +2,10 @@
 
 describe('Sign In page', () => {
   beforeEach(() => {
-
+    cy.visit('https://the-internet.herokuapp.com/login');
   });
 
-  it('should open login page', () => {
-    cy.visit('https://the-internet.herokuapp.com/login');
-
+  it('should allow a user to log in with valid credentials', () => {
     cy.get('#username').type('tomsmith');
     cy.get('#password').type('SuperSecretPassword!');
 
@@ -17,8 +15,6 @@ describe('Sign In page', () => {
   });
 
   it('should show error for invalid credentials', () => {
-    cy.visit('https://the-internet.herokuapp.com/login');
-
     cy.get('#username').type('wrongUser');
     cy.get('#password').type('wrongPassword');
 
@@ -28,8 +24,6 @@ describe('Sign In page', () => {
   });
 
   it('should logout successfully', () => {
-    cy.visit('https://the-internet.herokuapp.com/login');
-
     cy.get('#username').type('tomsmith');
     cy.get('#password').type('SuperSecretPassword!');
 
